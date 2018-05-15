@@ -3,8 +3,16 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
   "dependencies": {
     "koa": "^2.5.1",
-    "koa-router": "^7.4.0"
+    "koa-bodyparser": "4.2.0",
+    "koa-router": "^7.4.0",
+    "lodash": "4.17.10",
+    "mysql2": "^1.5.3",
+    "sequelize": "^4.37.7"
   }
 }
