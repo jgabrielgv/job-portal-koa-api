@@ -7,7 +7,7 @@ const router = require('./routes');
 const PORT = process.env.PORT || 4000;
 
 const db = require('./models');
-db.sequelize.sync()
+db.sequelize.sync(/*{force: true}*/)
     .then(() => console.log('Models synced'))
     .catch(err => console.log(err));
 
