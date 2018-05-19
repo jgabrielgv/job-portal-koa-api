@@ -20,8 +20,9 @@ module.exports = {
             const company = {
                 name,
                 city,
-                address
-            }
+                address,
+                UserId: ctx.state.user
+            };
 
             ctx.body = await ctx.db.Company.create(company);
         } catch (err) {
@@ -30,11 +31,12 @@ module.exports = {
     },
     /**
      * Find all the companies
-     * @param {*} ctx 
+     * @param {*} ctx
      */
     async find(ctx) {
         try {
             ctx.body = await ctx.db.Company.findAll({
+                UserId: ctx.state.user,
                 include: {
                     model: ctx.db.Job
                 }
@@ -45,7 +47,7 @@ module.exports = {
     },
     /**
      * Find company by id
-     * @param {*} ctx 
+     * @param {*} ctx
      */
     async findOne(ctx) {
         try {
