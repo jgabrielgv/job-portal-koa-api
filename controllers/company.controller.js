@@ -1,4 +1,39 @@
 module.exports = {
+    /**
+     * @param {*} ctx
+     *
+     * @api {post} /companies
+     * @apiGroup Companies
+     * @apiName CreateCompany
+     * @apiParam {String} Name Name of the company
+     * @apiParam {String} City City of the company
+     * @apiParam {String} Address Address of the company
+     * @apiParamExample {String} Request Params:
+     * {
+     *  "name": "Microsoft",
+     *  "city": "San José",
+     *  "address": "San Jose"
+     * }
+     * @apiSuccess {Object} Company A newly created company object
+     * @apiSuccessExample {json} CreateCompany-Success-Response:
+     * HTTP/1.1 200Ok
+     * {
+     *  "id": 1,
+     *  "name": "Microsoft"
+     *  "city": "San Jose",
+     *  "address": "San Jose",
+     *  "updatedAt": "2018-05-20T21:41:30.035Z",
+     *  "createdAt": "2018-05-20T21:41:30.035Z"
+     * }
+     * @apiExample {curl} Example usage:
+     * curl -i http://localhost:4000/companies
+     * @apiDescription LoggedIn user can create new company
+     * @apiHeader {String} Authorization JWT Authorization header
+     * @apiHeaderExample {json} Request Authorization Header
+     * {
+     *  "authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7InVzZXIiOjF9LCJpYXQiOjE1MjY4NTIzMjUsImV4cCI6MTUyNjkzODcyNX0.xeQrMmdA69QWuStKWTegUWNdUik1c5t33-8-TpYJkB0"
+     * }
+     */
     async create(ctx) {
         try {
             const {
@@ -30,8 +65,43 @@ module.exports = {
         }
     },
     /**
-     * Find all the companies
      * @param {*} ctx
+     * 
+     * @api {get} /companies
+     * @apiGroup Companies
+     * @apiName FindAllCompanies
+     * @apiSuccess {Object[]} Companies List of companies with related jobs
+     * @apiSuccessExample {json} GetCompanies-Success-Response:
+     * HTTP/1.1 200Ok
+     * [
+     *  {
+     *   "id": 1,
+     *   "name": "Microsoft",
+     *   "city": "Minnesota",
+     *   "address": "Minnesota St 50",
+     *   "createdAt": "2018-05-21T20:14:55.000Z",
+     *   "updatedAt": "2018-05-21T20:14:55.000Z",
+     *   "UserId": 1,
+     *   "Jobs": 
+     *   [
+     *    {
+     *     "id": 1,
+     *     "title": "Node.js developer",
+     *     "createdAt": "2018-05-21T20:17:57.000Z",
+     *     "updatedAt": "2018-05-21T20:17:57.000Z",
+     *     "CompanyId": 1
+     *    }
+     *   ]
+     *  }
+     * ]
+     * * @apiExample {curl} Example usage:
+     * curl -i http://localhost:4000/companies
+     * @apiDescription Find all the companies
+     * @apiHeader {String} Authorization JWT Authorization header
+     * @apiHeaderExample {json} Request Authorization Header
+     * {
+     *  "authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7InVzZXIiOjF9LCJpYXQiOjE1MjY4NTIzMjUsImV4cCI6MTUyNjkzODcyNX0.xeQrMmdA69QWuStKWTegUWNdUik1c5t33-8-TpYJkB0"
+     * }
      */
     async find(ctx) {
         try {

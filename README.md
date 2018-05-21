@@ -23,6 +23,8 @@ b. Working with the sequelize-cli
 To be able to use the sequelize command line interface, you need to install it globally:
 Install sequelize-cli globally: npm install -g sequelize-cli
 
+Install apidoc globally: npm i -g apidoc
+
 Creating the models
 
 You will find below the used commands to create the 5 models (under <link>/models<link> folder).

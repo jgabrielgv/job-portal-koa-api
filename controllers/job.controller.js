@@ -56,7 +56,7 @@ module.exports = {
      * @apiGroup Jobs
      * @apiName GetJobs
      * @apiSuccess {Object[]} Jobs List of jobs with candidates
-     * @apiSuccessExample {json} CreateJob-Success-Response:
+     * @apiSuccessExample {json} GetJobs-Success-Response:
      * HTTP/1.1 200Ok
      * [
      *  {

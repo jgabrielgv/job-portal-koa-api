@@ -1,4 +1,33 @@
 module.exports = {
+    /**
+     * @param {*} ctx
+     *
+     * @api {post} /applications
+     * @apiGroup Applications
+     * @apiName CreateApplication
+     * @apiSuccess {Object} Application A newly created application object
+     * * @apiSuccessExample {json} CreateApplication-Success-Response:
+     * HTTP/1.1 200Ok
+     * {
+     *  "status_id": 1,
+     *  "CandidateId": 1
+     *  "JobId": "1",
+     *  "updatedAt": "2018-05-20T21:41:30.035Z",
+     *  "createdAt": "2018-05-20T21:41:30.035Z"
+     * }
+     * @apiExample {curl} Example usage:
+     * curl -i http://localhost:4000/applications
+     * @apiDescription LoggedIn user can apply for the Job
+     * @apiHeader {String} Authorization JWT Authorization header
+     * @apiHeaderExample {json} Request Authorization Header
+     * {
+     *  "authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7InVzZXIiOjF9LCJpYXQiOjE1MjY4NTIzMjUsImV4cCI6MTUyNjkzODcyNX0.xeQrMmdA69QWuStKWTegUWNdUik1c5t33-8-TpYJkB0"
+     * }
+     * @apiParam {String} [firstName] First name of the applicant
+     * @apiParam {String} [lastName] Last name of the applicant
+     * @apiParam {String} [email] Email of the applicant
+     * @apiParam {Number} JobId Job ID to apply
+     */
     async create(ctx) {
         try {
 
