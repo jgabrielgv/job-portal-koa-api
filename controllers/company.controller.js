@@ -5,9 +5,9 @@ module.exports = {
      * @api {post} /companies
      * @apiGroup Companies
      * @apiName CreateCompany
-     * @apiParam {String} Name Name of the company
-     * @apiParam {String} City City of the company
-     * @apiParam {String} Address Address of the company
+     * @apiParam {String} name Name of the company
+     * @apiParam {String} city City of the company
+     * @apiParam {String} address Address of the company
      * @apiParamExample {String} Request Params:
      * {
      *  "name": "Microsoft",
@@ -66,7 +66,7 @@ module.exports = {
     },
     /**
      * @param {*} ctx
-     * 
+     *
      * @api {get} /companies
      * @apiGroup Companies
      * @apiName FindAllCompanies
@@ -82,7 +82,7 @@ module.exports = {
      *   "createdAt": "2018-05-21T20:14:55.000Z",
      *   "updatedAt": "2018-05-21T20:14:55.000Z",
      *   "UserId": 1,
-     *   "Jobs": 
+     *   "Jobs":
      *   [
      *    {
      *     "id": 1,
@@ -94,7 +94,7 @@ module.exports = {
      *   ]
      *  }
      * ]
-     * * @apiExample {curl} Example usage:
+     * @apiExample {curl} Example usage:
      * curl -i http://localhost:4000/companies
      * @apiDescription Find all the companies
      * @apiHeader {String} Authorization JWT Authorization header
@@ -116,8 +116,33 @@ module.exports = {
         }
     },
     /**
-     * Find company by id
      * @param {*} ctx
+     *
+     * @api {get} /companies/:id
+     * @apiGroup Companies
+     * @apiName FindCompany
+     * @apiSuccess {Object} Company Company that matches the specified id
+     * @apiSuccessExample {json} GetCompany-Success-Response:
+     * HTTP/1.1 200Ok
+     * [
+     *  {
+     *   "id": 1,
+     *   "name": "Microsoft",
+     *   "city": "Minnesota",
+     *   "address": "Minnesota St 50",
+     *   "createdAt": "2018-05-21T20:14:55.000Z",
+     *   "updatedAt": "2018-05-21T20:14:55.000Z",
+     *   "UserId": 1
+     *  }
+     * ]
+     * @apiExample {curl} Example usage:
+     * curl -i http://localhost:4000/companies/:id
+     * @apiDescription Find a company by id
+     * @apiHeader {String} Authorization JWT Authorization header
+     * @apiHeaderExample {json} Request Authorization Header
+     * {
+     *  "authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7InVzZXIiOjF9LCJpYXQiOjE1MjY4NTIzMjUsImV4cCI6MTUyNjkzODcyNX0.xeQrMmdA69QWuStKWTegUWNdUik1c5t33-8-TpYJkB0"
+     * }
      */
     async findOne(ctx) {
         try {
@@ -135,8 +160,25 @@ module.exports = {
         }
     },
     /**
-     * Destroy a company by id
-     * @param {*} ctx 
+     * @param {*} ctx
+     *
+     * @api {delete} /companies/:id
+     * @apiGroup Companies
+     * @apiName DeleteCompany
+     * @apiSuccess {String} Msg Deleted company with specified id
+     * @apiSuccessExample {json} DeleteCompany-Success-Response:
+     * HTTP/1.1 200Ok
+     * {
+     *  "msg": "Company is deleted with id 2"
+     * }
+     * @apiExample {curl} Example usage:
+     * curl -i http://localhost:4000/companies/:id
+     * @apiDescription Deletes a company by id
+     * @apiHeader {String} Authorization JWT Authorization header
+     * @apiHeaderExample {json} Request Authorization Header
+     * {
+     *  "authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7InVzZXIiOjF9LCJpYXQiOjE1MjY4NTIzMjUsImV4cCI6MTUyNjkzODcyNX0.xeQrMmdA69QWuStKWTegUWNdUik1c5t33-8-TpYJkB0"
+     * }
      */
     async destroy(ctx) {
         try {
@@ -153,8 +195,34 @@ module.exports = {
         }
     },
     /**
-     * Update company by id
-     * @param {*} ctx 
+     * @param {*} ctx
+     *
+     * @api {put} /companies/:id
+     * @apiGroup Companies
+     * @apiName UpdateCompany
+     * @apiParam {String} name Name of the company
+     * @apiParam {String} city City of the company
+     * @apiParam {String} address Address of the company
+     * @apiParamExample {String} Request Params:
+     * {
+     *  "name": "Google",
+     *  "city": "Santa Clara",
+     *  "address": "1600 Amphitheatre Parkway, en Mountain View"
+     * }
+     * @apiSuccess {String} Msg Updated company with specified id
+     * @apiSuccessExample {json} UpdateCompany-Success-Response:
+     * HTTP/1.1 200Ok
+     * {
+     *  "msg": "Company is updated with id 1"
+     * }
+     * @apiExample {curl} Example usage:
+     * curl -i http://localhost:4000/companies/:id
+     * @apiDescription Updates a company by id
+     * @apiHeader {String} Authorization JWT Authorization header
+     * @apiHeaderExample {json} Request Authorization Header
+     * {
+     *  "authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7InVzZXIiOjF9LCJpYXQiOjE1MjY4NTIzMjUsImV4cCI6MTUyNjkzODcyNX0.xeQrMmdA69QWuStKWTegUWNdUik1c5t33-8-TpYJkB0"
+     * }
      */
     async update(ctx) {
         try {

@@ -19,6 +19,8 @@ module.exports = {
    * @returns {object}
    */
   verify(token) {
-    return jwt.verify(token, config.development.secret);
+    return jwt.verify(token, config.development.secret, (error, decoded) => {
+      return error ? { error } : decoded;
+    });
   }
 };

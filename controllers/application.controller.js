@@ -6,7 +6,7 @@ module.exports = {
      * @apiGroup Applications
      * @apiName CreateApplication
      * @apiSuccess {Object} Application A newly created application object
-     * * @apiSuccessExample {json} CreateApplication-Success-Response:
+     * @apiSuccessExample {json} CreateApplication-Success-Response:
      * HTTP/1.1 200Ok
      * {
      *  "status_id": 1,

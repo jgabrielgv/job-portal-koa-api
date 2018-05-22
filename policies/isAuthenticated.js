@@ -7,11 +7,19 @@ module.exports = async(ctx, next) => {
   } else {
     ctx.throw(401, 'Authorization header is missing');
   }
-  const decodedToken =  JwtService.verify(token);
+
+  const verificationResponse = JwtService.verify(token);
+  if (verificationResponse.error) {
+    if (verificationResponse.error.expiredAt) {
+      ctx.throw(401, 'Token is expired');
+    } else {
+      ctx.throw(401, 'Invalid token');
+    }
+  }
 
   const user = await ctx.db.User.findOne({
     where: {
-      id: decodedToken.payload.user
+      id: verificationResponse.payload.user
     }
   });
   if(user) {
