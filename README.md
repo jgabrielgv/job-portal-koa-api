@@ -18,10 +18,10 @@ $ npm install
 $ npm run dev
 ```
 5. Testing a request (in the [/public/index.html](https://github.com/jgabrielgv/job-portal-koa-api/blob/master/public/index.html) you will find the neccesary documentation to execute the following requests:
-5.1 Sign up
-5.2 Sign in
-5.3 Create a new company
-5.4 Retrieve all the companies
+  5.1 Sign up
+  5.2 Sign in
+  5.3 Create a new company
+  5.4 Retrieve all the companies
 
 ## Working with the sequelize-cli
 To be able to use the sequelize command line interface, you need to install it globally:
